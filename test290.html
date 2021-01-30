@@ -8,9 +8,19 @@
 	</body>
 </html>
 <script>
-	var isMatch = function(s, p) {
-	s = "aa";
-	 p = "a";
-	};
-	console.log(isMatch())
+
+var wordPattern = function(pattern, str) {
+	str = "dog cat cat dog";
+	pattern = "abba";
+    var arr = str.split(' ');
+    if(pattern.length!=arr.length) return false;
+    for(var i=0;i<pattern.length;i++){
+        if(pattern.indexOf(pattern[i])!=arr.indexOf(arr[i])){
+            return false;
+        }
+    }
+    return true;
+};
+
+	console.log(wordPattern())
 </script>
