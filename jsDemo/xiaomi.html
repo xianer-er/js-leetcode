@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+	</head>
+	<body>
+	</body>
+	<script>
+		// (function(){
+		// return typeof arguments;
+		// })();   //object
+
+
+
+		// var foo = {
+		// bar: function() {  return this.baz; },
+		// baz: 1
+		// };
+
+		// (function(){
+		// 	console.log(arguments[0]());
+		// return typeof arguments[0]();
+		// })(foo.bar);  //undifiend
+
+
+
+// 		console.log([] == ![])  //true
+// 		console.log(Function instanceof Object);  //true
+// 		//Function=>
+// 		//Function.proto=>Function.prototype=>Function.prototype.proto=>Object.prototype
+// 		//Object => Object.prototype
+// 		console.log(Object instanceof Function);  //true
+// 		//第一个Object的原型链：Object=>
+// //Object.proto => Function.prototype=>Function.prototype.proto=>Object.prototype
+// //第二个Object的原型：Object=> Object.prototype
+// 		console.log((function f() {}).__proto__ === Function.prototype);  //true
+		
+		
+		// function f(){ return f; }
+		
+		// console.log(new f() instanceof f);
+	
+		
+		// function A() {} 
+		
+		// console.log(A().__proto__)
+		// console.log(A().prototype)
+		// console.log(A.prototype)
+		// console.log(A.__proto__)
+		
+		
+		// for (var i = 0; i < 4; i++) {
+		//     console.log(i);}
+			// for (var i = 0; i < 4; i++) {
+			//   setTimeout(function() {
+			//     console.log(i);
+			//   }, 1000);
+			// }
+			
+			for(var i=0;i<4;i++){
+				setTimeout((function(i){
+					return function(){
+						console.log(i)
+					}
+				})(i),1000)
+			}
+			
+			for(var i=0;i<4;i++){
+				(function(val){
+					setTimeout(function(){
+						console.log(val)
+					},1000)
+				})(i)
+			}
+	</script>
+</html>

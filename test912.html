@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title>快排</title>
+	</head>
+	<body>
+	</body>
+</html>
+<script>
+	/**
+	 * @param {number[]} nums
+	 * @return {number[]}
+	 */
+	let nums = [8, 2, 6, 7, 9, 1];
+	var sortArray = function(nums) {
+		qs(nums, 0, nums.length - 1);
+		return nums;
+	};
+
+	console.log(sortArray())
+
+	function qs(nums, low, high) {
+		if (low < high) {
+			let i = low;
+			let j = high;
+			let key = nums[i];
+			while (i < j) {
+				while ((i < j) && (nums[j] >= key)) {
+					j--;
+				}
+				if (i < j) {
+					nums[i++] = nums[j];
+				}
+				while (i < j && nums[i] < key)
+					i++;
+				if (i < j) {
+					nums[j--] = nums[i];
+				}
+			}
+			nums[i] = key;
+			qs(nums, low, i - 1);
+			qs(nums, i + 1, high);
+		}
+	}
+</script>

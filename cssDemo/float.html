@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+	</head>
+
+	<body>
+		<h1>002 浮动布局的优点？有什么缺点？清除浮动有哪些方式？</h1>
+
+		<div class="parent" style="background-color: #FF9600;">
+			添加额外标签
+			<div style="float: right; width: 50px;height: 50px;background-color: #3366FF;">我是浮动元素</div>
+			<!-- 添加额外标签并且添加clear属性 -->
+			<div style="clear:both"></div>
+			<!-- 也可以加一个br标签 -->
+		</div>
+
+		<div class="parent" style="background-color: #ee6aff;overflow: hidden;">
+			父级添加overflow属性，或者设置高度
+			<div style="float: right; width: 50px;height: 50px;background-color: #1146FF;">我是浮动元素</div>
+
+		</div>
+
+
+		<div class="parent clearfix" style="background-color: #61eaff;">
+			建立伪类选择器清除浮动（推荐）
+			<div style="float: right; width: 50px;height: 50px;background-color: #1146FF;">我是浮动元素</div>
+
+		</div>
+
+
+
+
+	</body>
+
+	<style>
+		//在css中添加:after伪元素
+		.clearfix :after {
+			content: "333";
+			display: block;
+			height: 0;
+			clear: both;
+			visibility: hidden;
+
+		}
+		
+	</style>
+
+</html>

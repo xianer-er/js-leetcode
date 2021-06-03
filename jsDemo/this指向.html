@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+	</head>
+	<body>
+	</body>
+	<script>
+		const foo={
+			bar:10,
+			fn1:function(){
+				console.log(this.bar)
+			},
+			fn2:function(){
+				setTimeout(function(){
+					console.log(this.bar)
+				})
+			},
+			fn3:function(){
+				setTimeout(()=>{
+					console.log(this.bar)
+				})
+			},
+		}
+		var fn1=foo.fn1;
+		fn1();
+		foo.fn2();
+		foo.fn3();
+	</script>
+</html>

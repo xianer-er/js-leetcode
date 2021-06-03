@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+	</head>
+	<body>
+	</body>
+	<script>
+		
+		function multi() {
+		    var args = Array.prototype.slice.call(arguments);
+		    var fn = function(...arg) {
+		       return multi.apply(null,arg.concat(args));
+		    }
+		    fn.toString = function() {
+		        return args.reduce(function(a, b) {
+		            return a + b;
+		        },1)
+		    }
+		    return fn;
+		}
+		
+		console.log(multi(2)(3)(4));
+		console.log(multi(2,3,4));
+		console.log(multi(2)(3,4));
+		console.log(multi(2,3)(4));
+
+	</script>
+</html>

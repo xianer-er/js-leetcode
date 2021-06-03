@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+	</head>
+	<style>
+		/* //transparent:表示透明 */
+		.triangle {
+			width: 0;
+			height:0;
+			border-left: 50px solid transparent;
+			border-right: 50px solid transparent;
+			border-bottom: 100px solid red;
+		}
+
+		.test1 {
+			height: 20px;
+			width: 20px;
+			border-color: #FF9600 #3366ff #12ad2a #f0eb7a;
+			border-style: solid;
+			border-width: 20px;
+		}
+
+		.test2 {
+			height: 0;
+			width: 0;
+			overflow: hidden;
+			/* 这里设置overflow, font-size, line-height */
+			font-size: 0;
+			/*是因为, 虽然宽高度为0, 但在IE6下会具有默认的 */
+			line-height: 0;
+			/* 字体大小和行高, 导致盒子呈现被撑开的长矩形 */
+			border-color: #FF9600 #3366ff #12ad2a #f0eb7a;
+			border-style: solid;
+			border-width: 20px;
+		}
+		.circle {
+		  width: 100px;
+		  height: 100px;
+		  background: red;
+		  border-radius: 50%
+		}
+		.parallelogram {
+		  width: 150px;
+		  height: 100px;
+		  transform: skew(20deg);
+		  background: red;
+		}
+	</style>
+	<body>
+		<div class="triangle"></div>
+		<div class="test1"></div>
+		<div class="test2"></div>
+		<div class="circle"></div>
+		<div class="parallelogram"></div>
+	</body>
+</html>

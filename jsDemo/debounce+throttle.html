@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+	</head>
+	<body>
+		<p>没有防抖的input</p>
+		<input id="unDebounce" />
+		<p>防抖后的input</p>
+		<input id="debounce" />
+		<p>节流后的input</p>
+		<input id="throttle" />
+	</body>
+	<script>
+		function ajax(content) {
+			console.log('ajax request ' + content)
+		}
+		// 未作处理
+		let input1 = document.getElementById('unDebounce');
+		input1.addEventListener('keyup', function(e) {
+			ajax(e.target.value)
+		})
+		// 防抖
+		let input2 = document.getElementById('debounce');
+		input2.addEventListener('keyup', function(e) {
+			debounceAjax(e.target.value);
+		})
+
+		function debounce(fn, delay) {
+			let timeoutId;
+			return function(args) {
+				let that = this;
+				let _args = args;
+				clearTimeout(timeoutId)
+				timeoutId = setTimeout(function() {
+					fn.call(that, _args);
+				}, delay)
+			}
+		}
+		let debounceAjax = debounce(ajax, 1000);
+
+
+		// 节流
+		let input3 = document.getElementById('throttle');
+		input3.addEventListener('keyup', function(e) {
+			throttleAjax(e.target.value);
+		})
+
+		let throttleAjax = throttle(ajax, 1000);
+// 时间戳方式
+		// function throttle(fn, delay) {
+		// 	let pre = Date.now();
+		// 	return function() {
+		// 		let that = this;
+		// 		let _args = arguments;
+		// 		let now = Date.now();
+		// 		if (now - pre >= delay) {
+		// 			pre = Date.now();
+		// 			fn.apply(that, _args);
+		// 		}
+		// 	}
+		// }
+		// 定时器方式
+		function throttle(fn,delay){
+			let timeoutId=null;
+			return function(){
+				let that = this;
+				let _args = arguments;
+				if(!timeoutId){
+					timeoutId = setTimeout(function(){
+						fn.apply(that, _args);
+						timeoutId=null;
+					},delay)
+				}
+				
+			}
+		}
+	</script>
+</html>

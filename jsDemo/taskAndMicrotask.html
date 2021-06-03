@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+	</head>
+	<body>
+	</body>
+	<script>
+	// 第一题
+	    console.log(1)
+	    setTimeout(()=>{
+	        console.log(3)
+	    })
+	    setTimeout(()=>{
+	        console.log(4)
+	    })
+	    var p = new Promise((res,rej)=>{
+	        console.log(5)
+	        res()
+	    })
+	    p.then(()=>{
+	        console.log(6)
+	    })
+	    console.log(2)
+	    // 执行顺序 1 5 2 6 3 4
+		
+		
+		//第二题
+		console.log("5555");
+		setTimeout(() =>  console.log("timeout"));
+		Promise.resolve()
+		  .then(() =>  console.log("promise"));
+		
+		 console.log("code");
+	</script>
+</html>

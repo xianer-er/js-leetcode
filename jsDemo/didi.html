@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+	</head>
+	<body>
+		<button id="test">test第三题</button>
+	</body>
+	<script>
+		// 1.
+		Object.prototype.a='a';
+		Function.prototype.a='a1';
+		function Person(){};
+		var didi = new Person();
+		
+		 console.log(didi.a);
+		 console.log(Person.a);
+		 console.log(didi.__proto__.__proto__.constructor.constructor);
+		 
+		 // 2.
+		 function bar(){
+			 console.log(myName);
+			 
+		 }
+		 function foo(){
+			 var myName = 'xiaojv';
+			 bar()
+		 }
+		 foo()
+		 var myName='didi';
+		 
+		 // 3.
+		 //点击按钮有反应吗，为什么，怎么解决
+		 // $('#test').click(function(argument){
+			//  console.log(1)
+		 // });
+		 // while(true){
+			//  console.log(Math.random());
+		 // }
+		 // setTimeout(()=>{
+			//  console.log(1);
+		 // })
+		 // 解释eventloop?
+		 
+		 //4.
+		 var Object={
+			 a:5,
+			 method:function(){
+				 console.log(this.a);
+			 // }
+		 }
+		 var b = Object.method;
+		  // var b = Object.method.bind(null);
+		  // Object.method.call(null);
+		 b();
+	</script>
+</html>

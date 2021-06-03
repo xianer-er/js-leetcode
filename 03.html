@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+		<style>
+			.center{
+				width: 100px;
+				height: 30px;
+				margin:30px 30px;
+				background-color: #12AD2A;
+			}
+			.left{
+				width: 100px;
+				height: 30px;
+				/* float: left; */
+				
+				background-color: #aaaa7f;
+			}
+			.right{
+				width: 100px;
+				height: 30px;
+				margin-top: 60px;
+				background-color: #aa0000;
+			}
+			.wrap{
+				display: flex;
+			}
+		</style>
+	</head>
+	<body>
+		<div class="wrap">
+			<div class="left"></div>
+			<div class="center"></div>
+			<div class="right"></div>
+		</div>
+		
+	</body>
+	<script>
+		window.id = 0
+		const fn = {
+		  id: 1,
+		  say1: function () {
+		    setTimeout(function () {
+		      console.log('id:', this.id)
+		    }, 1000)
+		  },
+		  say2: function () {
+		    setTimeout(() => {
+		      console.log('id:', this.id)
+		    }, 1000)
+		  },
+		  say3: () => {
+		    setTimeout(() => {
+		      console.log('id:', this.id)
+		    }, 1000)
+		  },
+		}
+		fn.say1() 
+		fn.say2() 
+		fn.say3() 
+
+		let a = "hhh";
+
+		String.prototype.say = function() {
+			console.log(11111111);
+		}
+
+		a.say();
+
+
+		// let b;
+		// b.call()
+		// Object.assign()
+
+
+		const a = () => {}
+		const b = a.bind(null)
+		console.log(a === b)
+	</script>
+</html>

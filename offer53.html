@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+	</head>
+	<body>
+	</body>
+	<script>
+		let nums=[1,3,4,5,9,9];
+		let target=9
+		var search = function(nums, target) {
+			let res=0;
+			nums.forEach(function(item){
+				if(item==target){
+					res++;
+				}
+			})
+			return res
+		};
+		console.log(search(nums,target))
+	</script>
+</html>

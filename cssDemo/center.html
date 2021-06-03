@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+	</head>
+	<style>
+		.wrap {
+			background-color: aquamarine;
+			text-align: center; //行内元素水平居中 
+
+		}
+
+		.test2 {
+			width: 400px;
+			margin: 0 auto;
+			background-color: #12AD2A;
+		}
+
+		.test2.1 {
+			width: 300px;
+			position: relative;
+		}
+
+		.kid {
+
+			margin-left: -150px;
+			background-color: #FF0000;
+		}
+		.wrap1{
+			height:500px;
+			background-color: bisque;
+		}
+		.demo1{
+			line-height:500px;
+			color: #12AD2A;
+		}
+		.demo2{
+			position: relative;
+		}
+		.demo2Kid{
+			position: absolute;
+			margin: auto;
+		}
+	</style>
+	<body>
+		<div class="wrap">
+			<span class="test1">行内元素水平居中</span>
+			<span class="test1">行内元素水平居中</span>
+
+			<div class="test2">对于确定宽度的块级元素：width和margin实现。margin: 0 auto;
+
+			</div>
+			<div class="test2.1">
+				<div class="kid">绝对定位和margin-left: -width/2, 前提是父元素position: relative</div>
+			</div>
+			
+		</div>
+		
+		<div class="wrap1">
+			<p class="demo1">利用line-height实现居中，这种方法适合纯文字类</p>
+			
+		</div>
+		<div class="demo2">
+			<div class="demo2Kid">通过设置父容器相对定位，子级设置绝对定位，标签通过margin实现自适应居中</div>
+		</div>
+	</body>
+</html>

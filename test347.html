@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+	</head>
+	<body>
+	</body>
+	<script>
+		let nums = [3,0,1,0];
+		let k =1;
+		var res = function(nums, k) {
+			// 使用字典，统计每个数字出现的次数，数字元素为key，次数为value
+			let map = new Map();
+			for (let num of nums) {
+				if (map.has(num)) {
+					map.set(num, map.get(num) + 1);
+				} else {
+					map.set(num, 1);
+				}
+			}
+			// 遍历map，用最小堆保存频率最大的k个元素
+				
+			map.forEach(function(value, key) {
+				let temp = value; //先取出当前元素
+				for (let k = key * 2 + 1; k < map.size; k = k * 2 + 1) { //从第key个节点的左子节点开始，也就是2i+1处开始
+
+					if (k + 1 < map.size && map.get(k) < map.get(k + 1)) {
+						k++
+					}
+					if (map.get(k) > temp) {
+						value = map.get(k);
+						key = k;
+					} else {
+						break;
+					}
+				}
+				value = temp;
+				console.log(value)
+			})
+			let arr =Array.from(map.keys())
+			return arr.slice(0,k);
+			
+		}
+		console.log(res(nums,k))
+		
+	</script>
+</html>

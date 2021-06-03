@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+	</head>
+	<body>
+	</body>
+
+</html>
+<script>
+	let obj = {
+		a: 1
+	}
+	let arr1 = [1, "2", {a: 1}, 4];
+	let arr2 = [4, 5, 2, 6, 9, {a: 1}];
+
+	function test(arr1, arr2) {
+		let arr3 = [];
+		arr1.forEach(function(item1) {
+			arr2.forEach(function(item2) {
+				if (item1 === item2) {
+					arr3.push(item2);
+				}
+				if( (typeof item1)==(typeof item2)){
+					if(item1.a==item2.a){
+						arr3.push(item2);
+					}
+				}
+			})
+		})
+
+
+
+		// for(let i=0;i<arr1.length;i++){
+		// 	for(let j=0;j<arr2.length;j++){
+		// 		if(arr1[i]==arr2[j]){
+		// 			arr3.push(arr1[i]);
+		// 		}
+		// 	}
+		// }
+		return arr3;
+	}
+	console.log(test(arr1, arr2));
+</script>

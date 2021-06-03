@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title>6666</title>
+	</head>
+	<body>
+		<h1>思路：字符串相加比较大小，利用快排，从右边遍历找小的交换，从左边遍历找大的交换 </h1>
+	</body>
+</html>
+<script>
+	/*
+	 *思路：字符串相加比较大小，利用快排，从右边遍历找小的交换，从左边遍历找大的交换
+	 */
+	
+	var nums = [3, 80, 1, 215, 666];
+	var minNumber = function (nums) {
+	    var res = sortMin(nums.map(String))
+	    return res.join('')
+	    function sortMin(array) {
+	        quickSort(0, array.length - 1)
+	        return array;
+	        function quickSort(i, j) {
+	            if (i < j) {
+	                var left = i
+	                var right = j
+	                var pivot = array[i]
+	                while (left < right) {
+	                    while (left < right && pivot + array[right] <= array[right] + pivot) {
+	                        right--
+	                    }
+	                    if (left < right) {
+	                        array[left++] = array[right]
+	                    }
+	                    while (left < right && pivot + array[left] >= array[left] + pivot) {
+	                        left++
+	                    }
+	                    if (left < right) {
+	                        array[right--] = array[left]
+	                    }
+	                }
+	                array[left] = pivot
+	                quickSort(i, left - 1)
+	                quickSort(left + 1, j)
+	            }
+	        }
+	    }
+	};
+
+	// var minNumber = function(nums) {
+	// 	let arr = nums.map(String)
+	// 	qs(arr, 0, arr.length - 1);
+	// 	console.log(arr)
+	// 	return arr;
+
+	// 	function qs(array, i, j) {
+			
+
+	// 		if (i < j) {
+	// 			var left = i
+	// 			var right = j
+	// 			var pivot = array[i]
+	// 			while (left < right) {
+	// 				while (left < right && pivot + array[right] <= array[right] + pivot) {
+	// 					right--
+	// 				}
+	// 				if (left < right) {
+	// 					array[left++] = array[right]
+	// 				}
+	// 				while (left < right && pivot + array[left] >= array[left] + pivot) {
+	// 					left++
+	// 				}
+	// 				if (left < right) {
+	// 					array[right--] = array[left]
+	// 				}
+	// 			}
+	// 			array[left] = pivot
+	// 			// quickSort(i, left - 1)
+	// 			// quickSort(left + 1, j)
+	// 				qs(nums, i, left - 1);
+	// 				qs(nums, left + 1, j);
+	// 		}
+
+	// 	}
+
+	// };
+	console.log(minNumber(nums))
+</script>

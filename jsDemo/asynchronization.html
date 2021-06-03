@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title>异步实现的几种方式</title>
+	</head>
+	<body>
+	</body>
+	<script>
+		// Promise
+		// const outTime = function(time){
+		// 	return new Promise(function(resolve,reject){
+		// 		setTimeout(function(){
+		// 			resolve();
+		// 		}.time)
+		// 	})
+		// }
+		// outTime(2000).then(function(){
+		// 	console.log("hello")
+		// 	return outTime(2000);
+		// }).then(function(){
+		// 	console.log("hello");
+		// 	return outTime(2000)
+		// })
+		
+		// async await
+		async function f() {
+		
+		  let promise = new Promise((resolve, reject) => {
+		    setTimeout(() => resolve("done!"), 1000)
+		  });
+		
+		  let result = await promise; // 等待，直到 promise resolve (*)
+		
+		  alert(result); // "done!"
+		}
+		
+		f();
+	</script>
+</html>

@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title>75. 颜色分类</title>
+	</head>
+	<body>
+		<p>给定一个包含红色、白色和蓝色，一共 n 个元素的数组，
+			原地对它们进行排序，使得相同颜色的元素相邻，并按照红色、白色、蓝色顺序排列。
+			此题中，我们使用整数 0、 1 和 2 分别表示红色、白色和蓝色。
+		</p>
+	</body>
+	<script>
+		// 思路：快排
+		var sortColors = function(nums) {
+			qs(nums, 0, nums.length-1);
+
+			function qs(nums, low, high) {
+				if (low < high) {
+					let i = low;
+					let j = high;
+					let key = nums[i];
+					while (i < j) {
+						while (i < j && nums[j] >= key) j--;
+						if (i < j) nums[i++] = nums[j];
+						while (i < j && nums[i] <= key) i++;
+						if (i < j) nums[j--] = nums[i];
+					}
+					nums[i] = key;
+					qs(nums, low, i - 1);
+					qs(nums, i + 1, high);
+				}
+			}
+			return nums;
+		};
+
+		let nums = [2, 0, 2, 1, 1, 0];
+		console.log(sortColors(nums));
+	</script>
+</html>

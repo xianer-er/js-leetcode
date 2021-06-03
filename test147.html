@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+	</head>
+	<body>
+	</body>
+	<script>
+		let head=[1,8,6,4,2]
+		var insertionSortList = function(head) {
+			// 哑结点
+			dummy = new ListNode(-1);
+			// 判断链表是否只有一个元素
+			while(head!=null){
+				next = head.next;
+				cur=dummy;
+				while(cur.next!=null && cur.next.val<head.val){
+					cur=cur.next;
+				}
+				head.next=cur.next;
+				cur.next=head;
+				head=next;
+			}
+			
+			return dummy.next;
+			console.log(dummy.next)
+		};
+		insertionSortList()
+	</script>
+</html>

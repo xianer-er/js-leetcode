@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+	</head>
+	<body>
+	</body>
+	<script>
+		// 基础版
+		const deepClone = (target) => {
+			if (typeof target === 'object' && target !== null) {
+				const cloneTarget = Array.isArray(target) ? [] : {};
+				for (let prop in target) {
+					// hasOwnProperty指示对象自身属性中是否具有指定的属性
+					if (target.hasOwnProperty(prop)) {
+						cloneTarget[prop] = deepClone(target[prop]);
+					}
+				}
+				return cloneTarget;
+			} else {
+				return target;
+			}
+
+		}
+		
+		// 解决循环引用
+		function clone(target,map=new WeakMap()){
+			if(typeof target === 'object'){
+				let cloneTarget=Array.isArray(target)?[]:{};
+				if(map.get(target)){
+					return map.get(target)
+				}
+				map.set(target,cloneTarget);
+				for(const key in target){
+					cloneTarget[key] = clone(target[key],map);
+				}
+				return cloneTarget;
+			}else{
+				return target;
+			}
+		}
+	</script>
+</html>

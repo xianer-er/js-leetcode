@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title>215. 数组中的第K个最大元素</title>
+	</head>
+	<body>
+		<p>在未排序的数组中找到第 k 个最大的元素。
+		请注意，你需要找的是数组排序后的第 k 个最大的元素，
+		而不是第 k 个不同的元素。</p>
+	</body>
+	<script>
+		// 思路：先进行从小到大快排，然后得出结果是nums[nums.length-k];
+	var findKthLargest = function(nums, k) {
+		let res;
+		qs(nums,0,nums.length-1)
+		function qs(nums,low,high){
+			if(low<high){
+				let i=low;
+				let j=high;
+				let key = nums[i];
+				while(i<j){
+					while(i<j&&nums[j]>=key)j--;
+					if(i<j)nums[i++]=nums[j];
+					while(i<j&&nums[i]<=key)i++;
+					if(i<j)nums[j--]=nums[i];
+				}
+				nums[i]=key;
+				qs(nums,low,i-1);
+				qs(nums,i+1,high);
+			}
+		}
+		res=nums[nums.length-k];
+		return res;
+	};	
+	let nums=[3,2,1,5,6,4];
+	let k=2;
+	console.log(findKthLargest(nums,k));
+	</script>
+</html>
