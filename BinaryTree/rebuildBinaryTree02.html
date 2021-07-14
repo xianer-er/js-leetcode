@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+	</head>
+	<body>
+		<h1>给定前序遍历和中序遍历的结果，求出后序遍历结果</h1>
+		<p>思路：</p>
+		<p>在重建二叉树的基础上，进行后序二叉树排列</p>
+		<a href="http://www.conardli.top/docs/dataStructure/%E4%BA%8C%E5%8F%89%E6%A0%91/%E9%87%8D%E5%BB%BA%E4%BA%8C%E5%8F%89%E6%A0%91.html#%E9%A2%98%E7%9B%AE2-%E6%B1%82%E4%BA%8C%E5%8F%89%E6%A0%91%E7%9A%84%E9%81%8D%E5%8E%86"></a>
+	</body>
+</html>
+<script type="text/javascript">
+var getHRD=function(preorder,inorder){
+	if(!preorder){
+		return '';
+	}
+	if(preorder.length===1){
+		return pre;
+	}
+	const head = preorder[0];
+	const index = inorder.indexOf(head);
+	const ileft = inorder.substring(0,index);
+	const iright = inorder.substring(index+1);
+	const pleft = preorder.substring(1,index+1);
+	const pright = preorder.substring(index+1);
+	
+	return getHRD(pright,iright)  + getHRD(pleft,ileft)+ head;
+}
+</script>

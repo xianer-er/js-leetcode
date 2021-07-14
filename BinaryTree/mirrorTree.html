@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+	</head>
+	<body>
+		<h1>镜像二叉树  剑指offer 27</h1>
+		<p>让二叉树的左节点等于右节点进行递归交换</p>
+	</body>
+</html>
+<script type="text/javascript">
+	var mirrorTree=function(root){
+		if(!root){
+			return root;
+		}
+		const temp = root.left;
+		root.left = mirrorTree(root.right);
+		root.right= mirrorTree(temp);
+		return root;
+	}
+</script>

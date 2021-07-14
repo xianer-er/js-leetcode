@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+	</head>
+	<body>
+		<h1>二叉搜索树的后序遍历序列 剑指offer33</h1>
+		<p>思路：</p>
+		<p>首先如果数组长度小于2肯定为true</p>
+		<p>后序遍历：左子树-右子树-根节点，如果是这个顺序则数组最后一个元素为根节点</p>
+		<p>从左子树入手，首先遍历除了根节点以外元素是否有大于根节点，如果有则存储这个节点的索引</p>
+		<p>通过这个索引遍历，索引之后的数据是否都大于根节点，如果是则继续遍历，如不是则不满足为false</p>
+		<p>接着对左子树和右子树进行递归遍历，如果左子树和右子树都为true则最终符合</p>
+		<a href="https://leetcode-cn.com/problems/er-cha-sou-suo-shu-de-hou-xu-bian-li-xu-lie-lcof/"></a>
+	</body>
+</html>
+<script type="text/javascript">
+	var verifyPostorder = function(postorder) {
+	    if(postorder&&postorder.lenght>2){
+	        let root = postorder[postorder.length-1];
+	        // 遇到右子树停止
+	        for(let i =0;i<postorder.length-1;i++){
+	            if(postorder[i]>root){
+	                break;
+	            }
+	        }
+	        // 如果最后一个左子树后还有比root小的，说明不成立
+	        for(let j=i;j<postorder.length-1;j++){
+	            if(postorder[j]<root){
+	                return false;
+	            }
+	        }
+	
+	        let left = true;
+	        if(i>0){
+	
+	       left= verifyPostorder(postorder.slice(0,i));
+	        }
+	        let right = true;
+	        if(i<postorder.length-1){
+	
+	       right= verifyPostorder(postorder.slice(i,postorder.length-1));
+	        }
+	
+	
+	            return left&&right;
+	    }
+	};
+</script>

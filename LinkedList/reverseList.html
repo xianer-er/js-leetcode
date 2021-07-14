@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+	</head>
+	<body>
+		<h1>剑指offer：反转链表</h1>
+		<p>思路：</p>
+		<p>1.后边的节点存起来</p>
+		<p>2.让当前的节点地址等于前面的节点值</p>
+		<p>3.让前面节点等于当前节点</p>
+		<p>4.当前节点再等于后面节点</p>
+		<a href="https://leetcode-cn.com/problems/fan-zhuan-lian-biao-lcof/">题目链接</a>
+	</body>
+</html>
+<script type="text/javascript">
+ var reverseList = function (head) {
+      let cur = head ;
+	  let pre =null;
+	  while(cur){
+		  const next = cur.next;
+		  cur.next=pre;
+		  pre = cur;
+		  cur=next;
+	  }
+	  return pre;
+    };
+</script>

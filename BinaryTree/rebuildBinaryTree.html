@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+	</head>
+	<body>
+		<h1>重建二叉树，剑指offer07</h1>
+		<p>前序遍历：根节点-左子树前序遍历-右子树前序遍历</p>
+		<p>中序遍历：左子树前序遍历-根节点-右子树前序遍历</p>
+		<p>后序遍历：左子树前序遍历-右子树前序遍历-根节点</p>
+		<p>重建思路</p>
+		<p>找出根节点</p>
+		<p>找到根节点在中序遍历的位置，根节点左边是左子树，右边是右子树</p>
+		<p>找出前序遍历中的左子树pleft和右子树pright</p>
+		<p>找出中序遍历中的左子树ileft和右子树iright</p>
+		<p>对左子树和右子树进行递归找叶节点</p>
+	</body>
+
+</html>
+<script>
+	var rebuildeTree = function(preorder,inorder){
+		if(preorder.length===0){
+			return null;
+		}
+		if(preorder.length===1){
+			return new TreeNode(preorder[0])
+		}
+		const value = preorder[0];
+		const index = inorder.indexOf(value);
+		const ileft = inorder.slice(0,index);
+		const iright = inorder.slice(index+1);
+		const pleft = preorder.slice(1,index+1);
+		const pright = preorder.slice(index+1);
+		const node = new TreeNode(value);
+		node.left=rebuildeTree(pleft,ileft);
+		node.right=rebuildeTree(pright,iright);
+		return node;
+	}
+</script>
