@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+	</head>
+	<body>
+		<h1>剑指 Offer 55 - I. 二叉树的深度</h1>
+		<p>二叉树的深度为根节点到最远叶子节点的最长路径上的节点数</p>
+		<a href="https://leetcode-cn.com/problems/er-cha-shu-de-shen-du-lcof/"></a>
+	</body>
+	<script type="text/javascript">
+		var maxDepth = function(root) {
+		return !root?0:Math.max(maxDepth(root.left),maxDepth(root.right))+1;
+		};
+	</script>
+</html>

@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+		<style type="text/css">
+			section {
+			    height:150px;
+			}
+			.box {
+			    background-color: rgb(224, 206, 247);
+			    border: 5px solid rebeccapurple;
+			}
+			.box[style] {
+			    background-color: aliceblue;
+			    border: 5px solid steelblue;
+			}
+			.float {
+			    float: left;
+			    overflow: hidden; /* required by resize:both */
+			    resize: both;
+			    margin-right:25px;
+			    width: 200px;
+			    height: 100px;
+			    background-color: rgba(255, 255, 255, .75);
+			    border: 1px solid black;
+			    padding: 10px;
+			}
+		</style>
+	</head>
+	<body>
+		<section>
+		  <div class="float">Try to resize this outer float</div>
+		  <div class="box"><p>Normal</p></div>
+		</section>
+		<section>
+		  <div class="float">Try to resize this outer float</div>
+		  <div class="box" style="display:flow-root"><p><code>display:flow-root</code><p></div>
+		</section>
+	</body>
+</html>

@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+	</head>
+	<body>
+		<h1>平衡二叉树   剑指offer55</h1>
+	</body>
+	<script type="text/javascript">
+		var isBalanced =   function IsBalanced_Solution(pRoot) {
+		      return balanced(pRoot) != -1;
+		    }
+		
+		    function balanced(node) {
+		      if (!node) {
+		        return 0;
+		      }
+		      const left = balanced(node.left);
+		      const right = balanced(node.right);
+		      if (left == -1 || right == -1 || Math.abs(left - right) > 1) {
+		        return -1;
+		      }
+		      return Math.max(left, right) + 1;
+		    }
+	</script>
+</html>

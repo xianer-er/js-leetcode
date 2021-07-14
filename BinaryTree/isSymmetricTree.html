@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+	</head>
+	<body>
+		<h1>对称二叉树 剑指offer 28</h1>
+		<p>判断一个二叉树是不是对称二叉树：</p>
+		<p>左子树的右节点和右子树的左节点相同，反之也相同；相当于对称图形，如果一个二叉树同此二叉树的镜像是同样的就是对称二叉树。</p>
+	</body>
+</html>
+<script>
+	var isSymmetric = function(root) {
+	        return isSymmetricTree(root,root);
+	};
+	
+	function isSymmetricTree(node1,node2){
+	    if(!node1&&!node2){
+	        return true;
+	    }
+	    if(!node1 || !node2){
+	        return false;
+	    }
+	    if(node1.val !=node2.val){
+	        return false;
+	    }
+	    return isSymmetricTree(node1.left,node2.right)&&isSymmetricTree(node2.right,node1.left);
+	}
+</script>
