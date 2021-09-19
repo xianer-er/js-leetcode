@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+	</head>
+	<body>
+	</body>
+</html>
+<script type="text/javascript">
+	
+	
+		// 利用api
+	function isPalindrome01(str){
+		return str.split("").reverse().join()===str;
+	}
+	// for循环
+	function isPalindrome02(str){
+		let s = str.split("")
+		for (let i=0;i<s.length/2;i++) {
+				if(s[i]!==s[s.length-1-i]){
+					return false;
+				}
+			
+		}
+		return true
+	}
+	
+	let string="abhcba"
+	console.log(isPalindrome02(string))
+</script>

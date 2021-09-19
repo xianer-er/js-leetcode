@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+	</head>
+	<body>
+	</body>
+</html>
+<script type="text/javascript">
+	let array = [2,3,4,5,6];
+	// 1.方法一：每获取一个随机索引对应的值添加到新数组，再把这个值从老数组中删掉
+	function randomSortArray01(arr){
+		let rarr =[];
+		while(arr.length){
+			let rindex = parseInt(Math.random()*arr.length);
+			
+			rarr.push(arr[rindex]);
+			arr.splice(rindex,1);
+		}
+		return rarr;
+	}
+	
+	// 2.方法二：倒叙遍历，获取一个随机索引，把索引对应的值与当前遍历的值交换
+	function randomSortArray02(arr){
+		for(let i=arr.length-1;i>0;i--){
+			let rindex = parseInt(Math.random()*(i-1));
+			
+			let temp = arr[rindex];
+			arr[rindex]=arr[i]
+			arr[i] = temp;
+			
+			
+		}
+		return arr;
+	}
+	
+	// 
+	function randomSortArray03(arr){
+		return arr.sort(()=>Math.random()*0.5)
+	}
+	document.write(randomSortArray03(array))
+</script>

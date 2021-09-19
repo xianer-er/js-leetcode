@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+	</head>
+	<body>
+	</body>
+</html>
+<script type="text/javascript">
+	// 方法1
+	function isChildOf(child, parent) {
+	        if(child && parent) {
+	            let parentNode = child.parentNode;
+	            while(parentNode) {
+	                if(parent === parentNode) {
+	                    return true;
+	                }
+	                parentNode = parentNode.parentNode;
+	            }
+	        }
+	        return false;
+	    }
+		
+		// 方法2
+		parent.contains(child)  // true | false
+
+</script>

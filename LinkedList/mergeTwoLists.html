@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+	</head>
+	<body>
+		<h1>剑指 Offer 25. 合并两个排序的链表</h1>
+		<p>使用递归，先比较两个同级节点，得出最小的一方后，那它的next和对方大的节点比较</p>
+		<a href="https://leetcode-cn.com/problems/he-bing-liang-ge-pai-xu-de-lian-biao-lcof/">题目链接</a>
+	</body>
+</html>
+<script type="text/javascript">
+	var mergeTwoLists = function(l1, l2) {
+	    if(!l1){
+	        return l2;
+	    };
+	    if(!l2){
+	        return l1;
+	    }
+	    let node;
+	    if(l1.val<l2.val){
+	        node=l1;
+	        node.next=mergeTwoLists(node.next,l2)
+	    }else{
+	        node=l2
+	        node.next=mergeTwoLists(l1,node.next)
+	    }
+	return node
+	};
+</script>

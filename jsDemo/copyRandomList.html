@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+	</head>
+	<body>
+		<h1>复制复杂链表-剑指offer35</h1>
+		<p>先用map容器复制出一个链表</p>
+		<p>再通过循环对节点的next和random进行复制</p>
+		<a href="https://leetcode-cn.com/problems/fu-za-lian-biao-de-fu-zhi-lcof/">题目链接</a>
+	</body>
+</html>
+<script type="text/javascript">
+	/**
+	 * // Definition for a Node.
+	 * function Node(val, next, random) {
+	 *    this.val = val;
+	 *    this.next = next;
+	 *    this.random = random;
+	 * };
+	 */
+	
+	/**
+	 * @param {Node} head
+	 * @return {Node}
+	 */
+	//  先复制链表再复制关系
+	var copyRandomList = function(head) {
+	    if(!head){
+	        return null
+	    }
+	    let map = new Map();
+	    let node = head;
+	    // 复制链表
+	    while(node){
+	        map.set(node, new Node(node.val));
+	        node=node.next
+	    }
+	    node = head;
+	    // 复制关系
+	    while(node){
+	        map.get(node).next = node.next?map.get(node.next):null;
+	        map.get(node).random = node.random?map.get(node.random):null;
+	        node=node.next;
+	    }
+	    return map.get(head)
+	};
+</script>

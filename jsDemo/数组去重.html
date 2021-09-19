@@ -7,3 +7,42 @@
 	<body>
 	</body>
 </html>
+<script type="text/javascript">
+	let array = [1,4,5,2,3,4,2,6]
+	// 1.object	
+	// const unique = (array)=>{
+	// 	let container={};
+	// 	return array.filter((item,index)=>container.hasOwnProperty(item)?false:container[item]=true)
+	// }
+	
+	// 2.indexof+filter
+	// const unique = (array)=>{
+	// 	return array.filter((item,index)=>array.indexOf(item)===index);
+	// }
+	
+	// 3.set
+	const unique =array=>Array.from(new Set(array))
+	const unique = array =>[...new Set(arr)]
+	
+	// 4.排序
+	const unique = (array)=>{
+		array.sort((a,b)=>a-b);
+		let pre =0;
+		const result=[];
+		for(let i =0;i<array.length;i++){
+			
+			if(!i||array[i]!=array[pre]){
+				result.push(array[i]);
+			}
+			pre=i;
+		}
+		return result;
+	}
+	
+	// 5.去除重复值
+	const unique = arr =>arr.filter(i=>arr.indexOf(i)===arr.lastIndexOf(i))
+	
+	
+	// console.log(unique)
+	// console.log(unique(array))
+</script>

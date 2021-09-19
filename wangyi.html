@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+	</head>
+	<body>
+	</body>
+</html>
+<script type="text/javascript">
+	var addTwoNumbers = function(l1, l2) {
+	    //链表反转
+	    let turnl1 = turnrev(l1)
+	    let turnl2 = turnrev(l2)
+	    // 存进位
+	    let add = 0
+	  a let adder = new ListNode(-1)
+	    let head = adder
+	    while (add || turnl1 || turnl2) {
+	        //判断是0的情况
+	        let num1 = turnl1 !== null ?turnl1.val : 0
+	        let num2 = turnl2 !== null ? turnl2.val : 0
+	        let sum = num1 + num2 + add    
+	        adder.next = new ListNode(sum% 10)
+	        //进位取整，就是1 或者 0 
+	        add = (sum/10) | 0
+	        adder = adder.next
+	        if (turnl1) turnl1 = turnl1.next
+	        if (turnl2) turnl2 = turnl2.next
+	    }
+	    //链表再反转
+	    return  turnrev(head.next)
+	};
+	function  turnrev(head)  {
+	   let prev = null;
+	    let cur = head;
+	    while(cur){
+	        const node = cur.next;
+	        cur.next = prev;
+	        prev = cur;
+	        cur = node;
+	    }
+	    return prev
+	};
+
+
+
+public boolean isSameTree(TreeNode p,TreeNode q){
+        //两棵二叉树均为null
+        if(p == null && q == null){
+            return true;
+        }
+        //其中只有一棵树为null
+        if(p == null || q == null){
+            return false;
+        }
+        //节点值不相等
+        if(p.val != q.val){
+            return false;
+        }
+        //两棵树不为null,且节点值相等，分别比较该节点的左子树、右子树
+        return isSameTree(p.left,q.left) && isSameTree(p.right,q.right);
+ }
+</script>

@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+	</head>
+	<body>
+		<p style="text-transform: capitalize;">css-power</p>
+		<p style="text-transform: uppercase;">css-power</p>
+		<p style="text-transform: lowercase;">CSS-power</p>
+	</body>
+</html>
+<script type="text/javascript">
+	// 1.把单词通过-分开成为数组，把数组第二个值以后的每个单词首字母改为大写
+	let word = "js-power"
+	function transformStr01(str){
+		let strArr = str.split("-");
+			
+		for(let i=1;i<strArr.length;i++){
+			strArr[i]=strArr[i].charAt(0).toUpperCase()+strArr[i].substring(1)
+		}
+		return strArr.join('')
+	}
+	
+	// 2.遍历在-后面的字母都改为大写，并删除-
+	function transformStr02(str){
+		let strArr = str.split('');
+		for(let i=0;i<strArr.length;i++){
+			if(strArr[i]==='-'){
+				strArr.splice(i,1);
+				strArr[i]=strArr[i].toUpperCase()
+			}
+		}
+		return strArr.join('')
+	}
+	
+	// 3.正则匹配
+	
+	function transformStr03(str){
+		const reg = /-(\w)/g;
+		
+		    return str.replace(reg, function ($0, $1) {
+		        return $1.toUpperCase();
+		    });
+	}
+	document.write(transformStr02(word))
+	
+	
+// 驼峰转换下划线
+function toLine(name) {
+  return name.replace(/([A-Z])/g,"-$1").toLowerCase();
+}
+ 
+ 
+let b = 'aBdaNf';
+console.log(toLine(b));
+
+</script>
