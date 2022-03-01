@@ -1,0 +1,54 @@
+<!DOCTYPE HTML>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+	</head>
+	<body>
+	</body>
+</html>
+<script type="text/javascript">
+	let arr = [1, 2, 3]
+	let [one, ...two] = arr
+	console.log(one)
+	console.log(two)
+
+	let string = 'a,b,c'
+	let [A, B, C] = string.split(",")
+
+	console.log(A)
+	console.log(B)
+
+
+	let option = {
+		title: "lalala",
+		name: "wang",
+		age: "18"
+	}
+
+	let {
+		title,
+		...name
+	} = option
+	console.log(title)
+	console.log(name)
+
+	let path = []
+	add(path)
+	function add(path) {
+		console.log(path)
+		if (path.length == 2) {
+			return
+		}
+		path.push(1)
+		// add(path)
+		add([...path])
+		console.log(path)
+		return path
+	}
+	
+	// let path = [1,2]
+	
+	// console.log([...path])
+	// console.log([...[]])
+</script>

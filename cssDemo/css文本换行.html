@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+		<style type="text/css">
+				
+			div{
+				width: 100px;
+				word-break: normal;
+			}
+			p {
+			  width: 300px;
+			  display: -webkit-box;
+			  -webkit-box-orient: vertical;
+			  -webkit-line-clamp: 3;
+			  overflow: hidden;
+			}
+			.english{
+				color: #90EE90 !important;
+			}
+			.china{
+				color: #FF0000 ;
+			}
+		</style>
+	</head>
+	<body>
+		<p class="english">
+		  In this example the -webkit-line-clampcodeproperty is set to codecode<span class="china">我是</span>, which means the text is clamped after three lines.
+		  An ellipsis will be shown at the point where the text is clamped.
+		</p>
+		<div>asdfghjldjdjkjdnlsijiewnjnfvuhoucnnodjknmcxjknojriasdfghjldjdjkjdnlsijiewnjnfvuhoucnnodjknmcxjknojri</div>
+		<div>你 看  见多付  付付付付付付付付付付付付付耨偶偶偶偶偶偶你看见多付付付付付付付付付付付付付付耨偶偶偶偶偶偶</div>
+		<div>hello hello hello hello hello hello hello hello hello hello hello hello hello hello hello hello hello hello hello hello </div>
+	</body>
+</html>
+<script type="text/javascript">
+	console.log([]==![] )
+	console.log(   []==[])
+	console.log(![])
+	console.log([]=="")
+	// console.log([].toString())
+	// console.log(value of)
+	
+	var json = '{"a":"1","b":2}';
+	var obj = eval("("+json+")")
+	console.log(obj.a)
+</script>

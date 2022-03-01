@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+		<style type="text/css">
+			#box1 {
+				width: 50px;
+				height: 30px;
+				background-color: #12AD2A;
+				/* 动画名字，持续时间，过渡类型，延迟时间，循环次数，是否反向运动，动画的状态 */
+				animation: move 2s ease-in-out 3s infinite alternate running;
+
+
+
+			}
+
+			@keyframes move {
+				from {
+					width: 50px;
+					height: 30px;
+					/* transform:rotate旋转，skew扭曲，scale缩放，translate移动 */
+					transform: skew(0deg,0deg);
+					
+				}
+
+				to {
+					width: 100px;
+					height: 90px;
+					transform: skew(25deg,25deg);
+				}
+			}
+
+			#box2 {
+				width: 50px;
+				height: 50px;
+				border-radius: 50%;
+				background-color: #F0EB7A;
+
+				transition: all 1s ease-in-out 2s;
+
+
+			}
+			
+			#box2:hover{
+				border-radius: 20%;
+			}
+			.text{
+				font-size: 20px;
+			  -webkit-text-stroke: 2px #333;
+			}
+
+		</style>
+	</head>
+	<body>
+		<div id="box1">
+
+		</div>
+
+		<div id="box2">
+
+		</div>
+<p class="text">所得到的</p>
+	</body>
+</html>

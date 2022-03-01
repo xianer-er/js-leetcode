@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+	</head>
+	<body>
+	</body>
+</html>
+<script type="text/javascript">
+	let num1 ="213"
+	let num2 = "432"
+	
+	function test(n1,n2){
+		let i = n1.length-1;
+		let j = n2.length-1;
+		let carry = 0;
+		let ans = []
+		
+		while(i>=0||j>=0||carry>=0){
+			let c1 = i>=0?n1.charAt(i)-'0':0;
+			let c2 = j>=0?n2.charAt(j)-'0':0;
+			let s = c1+c2+carry;
+			ans.push(s)
+			carry=Math.floor(s%10);
+			i--;
+			j--;
+		}
+		return ans.reverse().toString()
+		
+	}
+	
+	
+	console.log(test(num1,num2))
+</script>

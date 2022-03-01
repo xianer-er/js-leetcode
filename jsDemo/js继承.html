@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+	</head>
+	<body>
+	</body>
+</html>
+<script type="text/javascript">
+
+	// 原型链继承  内存空间共享，改动一个子类另一个子类中的数据也会改变
+		
+	// function Parent () {
+	//     this.name = 'kevin';
+	// }
+	
+	// Parent.prototype.getName = function () {
+	//     console.log(this.name);
+	// }
+	
+	// function Child () {
+	
+	// }
+	
+	// Child.prototype = new Parent();
+	
+	// var child1 = new Child();
+	
+	// console.log(child1.getName()) // kevin
+	
+	
+	
+	
+	// 构造函数继承
+	// function Parent () {
+	//     this.names = ['kevin', 'daisy'];
+	// }
+	// function Child () {
+	//     Parent.call(this);
+	// }
+	
+	// var child1 = new Child();
+	
+	// child1.names.push('yayu');
+	// console.log(child1.age);
+	// console.log(child1.names); // ["kevin", "daisy", "yayu"]
+	
+	// var child2 = new Child();
+	
+	// console.log(child2.names); // ["kevin", "daisy"]
+
+
+
+
+// 组合继承
+// function Parent () {
+// 	    this.names = ['kevin', 'daisy'];
+// 		this.age = 10;
+// 	}
+// 	Parent.prototype.getAge = function(){
+// 		return this.age
+// 	}
+	
+// 	function Child () {
+// 	    Parent.call(this);
+// 	}
+// 	Child.prototype = new Parent()
+	
+// 	let child1 = new Child();
+// 	let child2 = new Child();
+// 	child1.names.push('xianer')
+// 	console.log(child1.names)
+// 	console.log(child2.names)
+// 	console.log(child1.age)
+
+
+// 原型式继承
+// function createObj(o){
+// 	function f(){};
+// 	f.prototype = o;
+// 	return new f();
+// }
+
+// let parent = {
+// 	name:['xianer','diudiu','milk'],
+// 	age:10
+// }
+
+// let child1 = createObj(parent)
+// let child2 = createObj(parent)
+// child1.name.push('zhuzhu')
+// console.log(child1.name)
+// console.log(child2.name)
+
+
+
+// 寄生式继承
+// function createObj(o){
+// 	let clone = Object.create(o)
+		
+// 	clone.getAge=function(){
+// 		console.log(11)
+// 	}
+	
+// 	return clone
+// }
+// let parent = {
+// 	name:['xianer','diudiu','milk'],
+// 	age:10
+// }
+
+// let child1 = createObj(parent)
+// let child2 = createObj(parent)
+// child1.name.push('zhuzhu')
+// console.log(child1.name)
+// console.log(child2.name)
+// console.log(child2.getAge)
+
+
+// 寄生组合式继承
+function create(o){
+	function f(){}
+	f.prototype=o;
+	return new f()
+}
+
+function prototype(child,parent){
+	let prototype = create(parent.prototype)
+	prototype.constructor = child;
+	child.prototype=prototype
+}
+function parent(){
+	this.name='xianer';
+	this.color = ['black','pink']
+}
+	
+parent.prototype.sayName=function(){
+	console.log(this.name)
+}
+	
+function child(name,age){
+	parent.call(this,name)
+	this.age = age
+}
+
+prototype(child,parent)
+child.prototype.sayAge=function(){
+	console.log(this.age)
+}
+
+
+let child1 = new child('xianer',10)
+let child2 = new child('zhuzhu',20)
+child1.sayName()
+child1.sayAge()
+child1.color.push('white');
+console.log(child1.color)
+console.log(child2.color)
+</script>

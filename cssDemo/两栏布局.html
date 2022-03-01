@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title>两列自适应布局是指一列由内容撑开，另一列撑满剩余宽度的布局方式
+
+</title>
+		<style>
+		/* 1. float+margin+bfc */
+		/* 	.wrap{
+				overflow: hidden;
+				margin: 0;
+				padding: 0;
+			}
+		.left{
+			background-color: #0000FF;
+			float: left;
+			margin-right: 20px;
+		}
+			
+		.right{
+			background-color: #12AD2A;
+			overflow: hidden;
+		}
+		 */
+		
+		/* 2.  flex */
+		.wrap{
+			display: flex;
+		}
+			
+		.left{
+			background-color: #0000FF;
+		}
+		.right{
+			background-color: #12AD2A;
+			
+				flex: 1;
+		}
+		</style>
+	</head>
+	<body>
+		<div class="wrap">
+			<div class="left">
+				 <p>left</p>
+			</div>
+			<div class="right">
+				  <p>right</p>
+				        <p>right</p>
+			</div>
+		</div>
+		
+	</body>
+</html>

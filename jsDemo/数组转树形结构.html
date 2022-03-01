@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+	</head>
+	<body>
+	</body>
+</html>
+<script type="text/javascript">
+	// 已知 list结构如下，写出函数使其转化为 reverseList
+	const list = [{
+			id: 1,
+			pid: 0,
+			value: "小明"
+		},
+		{
+			id: 2,
+			pid: 1,
+			value: "小明1"
+		},
+		{
+			id: 3,
+			pid: 1,
+			value: "小明2"
+		},
+		{
+			id: 4,
+			pid: 1,
+			value: "小明3"
+		},
+		{
+			id: 5,
+			pid: 0,
+			value: "小红"
+		},
+		{
+			id: 6,
+			pid: 5,
+			value: "小红1"
+		},
+		{
+			id: 7,
+			pid: 5,
+			value: "小红2"
+		},
+		{
+			id: 8,
+			pid: 5,
+			value: "小红3"
+		},
+		{
+			id: 9,
+			pid: 0,
+			value: "雅典娜"
+		},
+		{
+			id: 10,
+			pid: 9,
+			value: "雅典娜1"
+		},
+		{
+			id: 11,
+			pid: 10,
+			value: "雅典娜2"
+		},
+		{
+			id: 12,
+			pid: 11,
+			value: "雅典娜3"
+		},
+		{
+			id: 13,
+			pid: 12,
+			value: "雅典娜4"
+		},
+		{
+			id: 14,
+			pid: 13,
+			value: "雅典娜5"
+		},
+		{
+			id: 15,
+			pid: 14,
+			value: "雅典娜6"
+		},
+		{
+			id: 16,
+			pid: 0,
+			value: "小王"
+		}
+	];
+	const reverseList = [{
+			id: 1,
+			value: "小明",
+			children: []
+		},
+		{
+			id: 5,
+			value: "小红",
+			children: []
+		},
+		{
+			id: 9,
+			value: "雅典娜",
+			children: []
+		},
+		{
+			id: 16,
+			value: "小王",
+			children: []
+		}
+	];
+	
+	
+	function arrToTree(list,pid=''){
+		 let children = []
+		for(let item of list){
+			if(item.pid ==pid){
+				children.push(item)
+				item.children=arrToTree(list,item.id)
+			}
+			
+		}
+		return children
+	}
+	
+	console.log(arrToTree(list,''))
+</script>

@@ -9,11 +9,45 @@
 	</body>
 </html>
 <script>
-	var strStr = function(haystack, needle) {
-		 haystack="hello";
-		 needle="llo";
-	       return haystack.indexOf(needle);
-
+	// 一、实现一个方法，检查对象一是否是对象二的子集
+	function checkIsChildObject(a, b) {
+	//   遍历b，判断子属性和a是否相等
+	  for(let item in b){
+		  
+		     // console.log(b[item])
+		     //  console.log(a[item])
+	    if(b[item]===a[item]){
+		  console.log("true")
+		  if(typeof a[item] =="object"){
+			    console.log(a[item])
+			  checkIsChildObject( a[item] , b)
+		  }
+	      return true
+	    }
+	    
+	    
+	  }
+	    console.log("false")
+	  return false;
+	  
+	}
+	
+	
+	const obj = {
+	  a: 0,
+	  b: [],
+	  c: '',
+	  d: true,
+	  e: {
+	    f: 1,
+	    e: {
+	      f: 2,
+	    },
+	  },
 	};
-	console.log(strStr())
+	
+	checkIsChildObject({ a: 0 }, obj); // true
+	checkIsChildObject({ e: 0 }, obj); // false
+	checkIsChildObject({ e: { f: 1 } }, obj); // true
+	checkIsChildObject({ e: { f: 2 } }, obj); // true
 </script>

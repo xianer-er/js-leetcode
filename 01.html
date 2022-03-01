@@ -5,41 +5,54 @@
 		<title></title>
 	</head>
 	<body>
+		<input id="jieliu" />
+		<input id="fangdou" />
 	</body>
+	<script>
+		function request(arg) {
+			console.log(arg)
+		}
+		// 防抖
 
-</html>
-<script>
-	let obj = {
-		a: 1
-	}
-	let arr1 = [1, "2", {a: 1}, 4];
-	let arr2 = [4, 5, 2, 6, 9, {a: 1}];
-
-	function test(arr1, arr2) {
-		let arr3 = [];
-		arr1.forEach(function(item1) {
-			arr2.forEach(function(item2) {
-				if (item1 === item2) {
-					arr3.push(item2);
-				}
-				if( (typeof item1)==(typeof item2)){
-					if(item1.a==item2.a){
-						arr3.push(item2);
-					}
-				}
-			})
+		let input2 = document.getElementById('fangdou');
+		input2.addEventListener('keyup', function(e) {
+			console.log(1)
+			fangdouAjax(e.target.value);
 		})
+		let fangdouAjax = fangdou(request, 1000)
+		function fangdou(fn,wait){
+			let timeout ;
+			return function(...args){
+				clearTimeout(timeout)
+				timeout = setTimeout(()=>{
+					fn.apply(this,args)
+				},wait)
+			}
+		}
 
 
 
-		// for(let i=0;i<arr1.length;i++){
-		// 	for(let j=0;j<arr2.length;j++){
-		// 		if(arr1[i]==arr2[j]){
-		// 			arr3.push(arr1[i]);
-		// 		}
-		// 	}
-		// }
-		return arr3;
-	}
-	console.log(test(arr1, arr2));
-</script>
+
+
+		// 节流
+		let input1 = document.getElementById('jieliu');
+		input1.addEventListener('keyup', function(e) {
+			console.log(2)
+			jieliuAjax(e.target.value);
+		})
+		let jieliuAjax = jieliu(request, 1000)
+
+		function jieliu(fn, wait) {
+			let timeout = null;
+
+			return function(...args) {
+				if (!timeout) {
+					timeout = setTimeout(() => {
+						fn.apply(this, args)
+						timeout = null
+					}, wait);
+				}
+			}
+		}
+	</script>
+</html>

@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+	</head>
+	<body>
+	</body>
+</html>
+<script>
+var arr = [1,2,3,4,5,6,7,8,9,10];
+arr.sort(function(){
+	//如果返回true则表示两个元素交换位置，为false则表示两个元素不交换位置
+    return Math.random()-0.5;
+})
+// console.log(arr);
+
+
+
+
+   // function func(n, o) {
+   //     console.log(o);
+   //     return {
+   //         func: function(m) {
+   //             return func(m, n);
+   //         }
+   //     };
+   // }
+   // var a = func(0);
+   // a.func(1);
+   // a.func(2); 
+   // a.func(3); 
+   // var b = func(0).func(1).func(2).func(3);
+   // var c = func(0).func(1);
+   // c.func(2);
+   // c.func(3);
+   //  0  undefined 0 1 2 undefined  0 1 1
+   
+   
+ //   async function async1() {
+ //       console.log('async1 start')
+ //       await async2()
+ //       console.log('async1 end')
+ //   }
+ //   async function async2() {
+ //       new Promise(resolve => {
+ //           console.log('promise1')
+ //           resolve()
+ //       }).then(() => {
+ //           console.log('promise2')
+ //       })
+ //   }
+ //   console.log('script start')
+ //   setTimeout(() => {
+ //       console.log('setTimeout')
+ //   }, 0);
+   
+ //   async1()
+ //   new Promise(resolve => {
+ //       console.log('promise3')
+ //       resolve()
+ //   }).then(() => {
+ //       console.log('promise4')
+ //   })
+ //   console.log('script end')
+   
+ //   script start  
+ //   async1 start
+ //   promise1
+ //   promise3
+ //  script end
+ // promise2
+ //   promise4
+ // 	async1 end
+ //      setTimeout
+ 
+
+	// function test(list){
+	// 	let resList=[]
+	// 	for(let i=0;i<list.length;i++){
+	// 		if(list[i].pid==0){
+	// 			resList.push(list[i])
+	// 		}else if(list[i]){
+				
+	// 		}
+	// 	}
+	// 	return resList
+	// }
+	//     const test2 = filterCreateDate('123154546544564545654','789543543543543543543543543543543');
+	// console.log(test2)
+	// function filterCreateDate(str1,str2){
+	// 	let s1 = str1.split('')
+	// 	let s2 = str2.split('')
+	// 	if(s1.length<s2.length){
+	// 		for(let i =0 ;i<s2.length-s1.length;i++){
+	// 			s1.unshift(0)
+	// 		}
+	// 	}else if(s1.length>s2.length){
+	// 		for(let i =0 ;i<s1.length-s2.length;i++){
+	// 			s2.unshift(0)
+	// 		}
+	// 	}
+		
+	// 	let count = 0;
+	// 	let res = 0;
+	// 	let reslist = []
+	// 	for(let i =s1.length;i>0;i--){
+	// 		if(s1[i]+s2[i]>10){
+	// 			res = (s1[i]+s2[i])%10
+	// 				reslist.unshift(res+count)
+	// 			count = 1
+	// 		}else{
+	// 			res = s1[i]+s2[i]
+	// 				reslist.unshift(res+count)
+	// 			count = 0
+	// 		}
+		
+	// 	}
+	// 	return reslist.join()
+	// }
+</script>

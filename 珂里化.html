@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+	</head>
+	<body>
+	</body>
+</html>
+<script type="text/javascript">
+		
+	function currying(f){
+		return function(a){
+			return function(b){
+				return function(c){
+					return f(a,b,c)
+				}
+			}
+		}
+	}
+	
+	
+	function sum(a,b,c){
+		return a+b+c
+	}
+	
+	let curriedsum = currying(sum)
+	console.log(curriedsum(1)(2)(3))
+	
+</script>
