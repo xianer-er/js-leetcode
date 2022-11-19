@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title>从尾到头打印链表</title>
+	</head>
+	<body>
+		<h1>剑指offer06：从尾到头打印链表</h1>
+		<p>利用unshift，以及链表的节点的next为null就是尾节点</p>
+		<a href="https://leetcode-cn.com/problems/cong-wei-dao-tou-da-yin-lian-biao-lcof/">题目链接</a>
+	</body>
+</html>
+<script type="text/javascript">
+	var reversePrint = function(head) {
+	const arr =[];
+	while(head){
+	arr.unshift(head.val);
+	head=head.next;
+	}
+	return arr;
+	}; 
+</script>
