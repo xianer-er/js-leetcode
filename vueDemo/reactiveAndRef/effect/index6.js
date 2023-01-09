@@ -1,0 +1,110 @@
+  // 嵌套effect
+  
+  // 响应式处理
+  const bucket = new WeakMap();
+  // new
+  const data = {foo:true, bar:true}
+  // let activeEffect;
+
+  const effectStack = [];
+
+  function effect(fn) {
+    const effectFn = ()=>{
+      // 调用cleanup 函数完成清除工作
+      cleanup(effectFn)
+      // 当effectFn执行时候，将其设置为当前激活的副作用函数
+      activeEffect = effectFn
+      // 调用之前入栈
+      effectStack.push(effectFn)
+      fn()
+      // 调用之后出栈,并更新activeEffect
+      effectStack.pop()
+      activeEffect = effectStack[effectStack.length-1]
+    }
+    // activeEffect.deps 用来存储所有与该副作用函数相关联的依赖集合,track中收集依赖集合
+    effectFn.deps = []
+    effectFn()
+  }
+function cleanup(effectFn){
+  // 遍历effectFn.deps数组
+  for(let i =0;i<effectFn.deps.length;i++){
+    const deps = effectFn.deps[i]
+    // 将effectfn从依赖集合中移除
+    deps.delete(effectFn)
+  }
+  // 重置数组
+  effectFn.deps.length = 0
+}
+
+  const obj = new Proxy(data,{
+    get(target,key){
+     track(target,key)
+      return target[key]
+    },
+  
+    set(target,key,newVal){
+        target[key] = newVal
+      trigger(target,key)
+    }
+    })
+  
+function track(target,key){
+  // 没有activeEffect，直接return
+  if(!activeEffect) return target[key]
+  // 根据target从桶中取得depsMap，它也是个Map类型：key--》effects
+  let depsMap = bucket.get(target);
+  // 如果没有，新建一个Map与target关联
+  if(!depsMap) {
+    bucket.set(target,(depsMap = new Map()));
+  }
+
+  // 再根据key从depsmap中取得deps，他是一个set类型，存储所有与当前key又关的副作用函数
+  let deps = depsMap.get(key);
+  // 如果deps不存在，同样新建一个set并于key关联
+  if(!deps) {
+    deps = new Set();
+    depsMap.set(key,deps);
+  }
+  // 最后将当前激活的副作用函数添加到桶里。
+  deps.add(activeEffect)
+  // deps 就是一个与当前副作用函数存在联系的依赖集合
+  // 将其添加到activeEffect.deps数组中
+  activeEffect.deps.push(deps)
+}
+
+function trigger(target,key){
+  //根据target从桶中取得depsmaps，它是key--》effects
+  const depsMap = bucket.get(target)
+  if(!depsMap) return
+  // 根据key取出所以副作用函数
+  const effects = depsMap.get(key)
+  const effectsToRun = new Set(effects)
+  effectsToRun.forEach(effectFn=>{
+    // 如果trigger触发执行的副作用函数与当前执行的副作用函数相同，则不触发执行
+    if(effectFn!== activeEffect){
+      effectsToRun.add(effectFn)
+    }
+  })
+
+  effectsToRun.forEach(effectFn=>effectFn())
+  // effects&&effects.forEach(fn=>fn())
+}
+
+
+
+//   使用
+// new   期待：1  2  1  2
+let temp1 ,temp2
+effect(function effectFn1(){
+  console.log('effectFn1,do')
+  effect(function effectFn2(){
+    console.log('effectFn2,do')
+    temp2 = obj.bar
+  })
+  temp1 = obj.foo
+})
+
+setTimeout(()=>{
+  obj.foo =false
+},1000)
+
